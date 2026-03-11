@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishnu Gireesh - SAP ABAP Developer Profile</title>
+
+    <!-- Clean, readable font similar to standard resume fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Subtle animated background shadow/glow for the desk effect -->
+    <div class="desk-light"></div>
+
+    <!-- Navigation Dots & Theme Toggle -->
+    <nav class="side-nav">
+        <button id="theme-toggle" class="nav-dot theme-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
+            <i class='bx bx-moon'></i>
+        </button>
+        <div class="nav-divider"></div>
+        <a href="#header" class="nav-dot active" title="Top"></a>
+        <a href="#objective" class="nav-dot" title="Objective"></a>
+        <a href="#education" class="nav-dot" title="Education"></a>
+        <a href="#skills" class="nav-dot" title="Skills"></a>
+        <a href="#experience" class="nav-dot" title="Experience"></a>
+        <a href="#projects" class="nav-dot" title="Projects"></a>
+        <a href="#certifications" class="nav-dot" title="Certifications"></a>
+        <a href="#extra" class="nav-dot" title="Activities"></a>
+    </nav>
+
+    <!-- Floating Download Button -->
+    <button id="download-btn" class="download-paper-btn" aria-label="Download Resume">
+        <span class="btn-text">Download Resume</span>
+        <i class='bx bx-cookie'></i>
+        <!-- Base icon will be overwritten in CSS or script with file, using font-awesome/bx -->
+        <i class='bx bxs-file-pdf'></i>
+    </button>
+
+    <!-- The Paper Resume Container -->
+    <div class="resume-paper" id="resume-container">
+        <!-- Paper Texture Overlay -->
+        <div class="paper-texture"></div>
+
+        <!-- Header -->
+        <header class="resume-header" id="header">
+            <h1 class="name-reveal">VISHNU GIREESH</h1>
+            <div class="contact-bar">
+                <a href="tel:+919539310630" class="contact-btn"><i class='bx bx-phone'></i> +91 9539310630</a>
+                <span class="separator">&diams;</span>
+                <a href="mailto:vishnu.g11037@gmail.com" class="contact-btn"><i class='bx bx-envelope'></i>
+                    vishnu.g11037@gmail.com</a>
+                <span class="separator">&diams;</span>
+                <a href="https://www.linkedin.com/in/vishnu-g-6b312a361/" target="_blank" class="contact-btn"><i
+                        class='bx bxl-linkedin-square'></i> LinkedIn</a>
+            </div>
+        </header>
+
+        <!-- Objective -->
+        <section class="resume-section fade-up" id="objective">
+            <h2 class="section-title">OBJECTIVE</h2>
+            <div class="section-content text-justify highlight-hover">
+                <p>
+                    Skilled <strong>SAP ABAP developer</strong> with 4.5 years of experience in developing and
+                    optimizing SAP applications. Proficient in Classic ABAP, OO ABAP and SAP modules, with strong
+                    analytical skills to identify inefficiencies and deliver solutions that improve operations and boost
+                    productivity. Skilled in analyzing technical requirements and delivering efficient, scalable
+                    solutions to support business processes. Dedicated to delivering high-quality solutions and
+                    improving business process. A collaborative team player with a commitment to excellence and strong
+                    communication skills.
+                </p>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="resume-section fade-up" id="education">
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="section-content">
+
+                <div class="edu-row interactive-row">
+                    <div class="edu-primary">
+                        <strong class="degree">Master’s in Computer Applications,</strong>
+                        <span class="school">Dr. A. P. J. Abdul Kalam Technical University, Kerala</span>
+                    </div>
+                    <div class="edu-date">2018 - 2021</div>
+                </div>
+
+                <div class="edu-row interactive-row">
+                    <div class="edu-primary">
+                        <strong class="degree">Bachelor’s in Computer Application,</strong>
+                        <span class="school">University of Kerala</span>
+                    </div>
+                    <div class="edu-date">2015 - 2018</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="resume-section fade-up" id="skills">
+            <h2 class="section-title">SKILLS</h2>
+            <div class="section-content skills-container">
+
+                <div class="skill-group">
+                    <div class="skill-category"><strong>Technical Skills</strong></div>
+                    <div class="skill-tags">
+                        <span class="skill-tag" style="--anim-delay: 0.1s">ABAP</span>
+                        <span class="skill-tag" style="--anim-delay: 0.2s">OO ABAP</span>
+                        <span class="skill-tag" style="--anim-delay: 0.3s">Data Dictionary</span>
+                        <span class="skill-tag" style="--anim-delay: 0.4s">IDOC</span>
+                        <span class="skill-tag" style="--anim-delay: 0.5s">Proxy</span>
+                        <span class="skill-tag" style="--anim-delay: 0.6s">Enhancements</span>
+                        <span class="skill-tag" style="--anim-delay: 0.6s">ODATA</span>
+                        <span class="skill-tag" style="--anim-delay: 0.7s">CDS</span>
+                        <span class="skill-tag" style="--anim-delay: 0.8s">AMDP</span>
+                        <span class="skill-tag" style="--anim-delay: 0.6s">RAP Basics</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-category"><strong>Soft Skills</strong></div>
+                    <div class="skill-tags alt-tags">
+                        <span class="skill-tag" style="--anim-delay: 0.1s">Problem Solving</span>
+                        <span class="skill-tag" style="--anim-delay: 0.2s">Analytical skills</span>
+                        <span class="skill-tag" style="--anim-delay: 0.3s">Teamwork</span>
+                        <span class="skill-tag" style="--anim-delay: 0.4s">Leadership</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="resume-section fade-up" id="experience">
+            <h2 class="section-title">EXPERIENCE</h2>
+            <div class="section-content">
+
+                <!-- Expanded by default -->
+                <div class="exp-item expandable expanded">
+                    <div class="exp-header toggle-exp">
+                        <div class="exp-role">
+                            <i class='bx bx-chevron-right toggle-icon'></i>
+                            <strong>Consultant</strong>
+                            <span class="exp-company">| Deloitte Consulting India Private Limited</span>
+                        </div>
+                        <div class="exp-date">June 2025 - February 2026</div>
+                    </div>
+                    <div class="exp-details">
+                        <ul class="exp-bullets">
+                            <li>Supported key business operations and participated in SAP development and consulting
+                                directly delivering value to client teams.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item expandable">
+                    <div class="exp-header toggle-exp">
+                        <div class="exp-role">
+                            <i class='bx bx-chevron-right toggle-icon'></i>
+                            <strong>Consultant</strong>
+                            <span class="exp-company">| Applexus Technologies</span>
+                        </div>
+                        <div class="exp-date">February 2024 - June 2025</div>
+                    </div>
+                    <div class="exp-details">
+                        <ul class="exp-bullets">
+                            <li><i class='bx bx-award'></i> Gem Award for Q3 2024</li>
+                            <li><i class='bx bx-trophy'></i> Annual award: Best Consultant 2024</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item expandable">
+                    <div class="exp-header toggle-exp">
+                        <div class="exp-role">
+                            <i class='bx bx-chevron-right toggle-icon'></i>
+                            <strong>Associate Consultant</strong>
+                            <span class="exp-company">| Applexus Technologies</span>
+                        </div>
+                        <div class="exp-date">February 2022 - January 2024</div>
+                    </div>
+                    <div class="exp-details">
+                        <ul class="exp-bullets">
+                            <li>Progressed into associate role, taking on more complex development tasks and
+                                responsibilities inside core SAP modules.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item expandable">
+                    <div class="exp-header toggle-exp">
+                        <div class="exp-role">
+                            <i class='bx bx-chevron-right toggle-icon'></i>
+                            <strong>Trainee Consultant</strong>
+                            <span class="exp-company">| Applexus Technologies</span>
+                        </div>
+                        <div class="exp-date">August 2021 - January 2022</div>
+                    </div>
+                    <div class="exp-details">
+                        <ul class="exp-bullets">
+                            <li>Initial training and onboarding into SAP ABAP development practices, participating in
+                                minor defect resolutions.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="resume-section fade-up" id="projects">
+            <h2 class="section-title">PROJECTS</h2>
+            <div class="section-content">
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="p-client">Client: <strong>Siemens Healthineers</strong></div>
+                        <div class="p-date">June 2025 - February 2026</div>
+                    </div>
+                    <p class="project-role-title">Roles and Responsibilities:</p>
+                    <ul class="project-bullets">
+                        <li>Designed and delivered custom ABAP reports, business enhancements, and proxy interfaces,
+                            strictly adhering to project coding standards and ensuring high-quality, defect-free
+                            solutions.</li>
+                        <li>Developed custom SAP Adobe Forms from scratch and modified existing form layouts to meet
+                            specific business requirements.</li>
+                        <li>Conducted in-depth debugging and root cause analysis to resolve complex technical defects,
+                            ensuring high-quality fixes were delivered within strict project timelines.</li>
+                        <li>Created detailed Technical Specifications, Unit Test plans, and Quality Checklist documents
+                            to ensure strict adherence to project standards and deliver high-quality solutions.</li>
+                    </ul>
+                    <div class="project-tech-stack">
+                        <span>ABAP Reports</span>
+                        <span>Proxy</span>
+                        <span>Adobe Forms</span>
+                        <span>Debugging</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="p-client">Client: <strong>Cole Haan</strong></div>
+                        <div class="p-date">January 2025 - May 2025</div>
+                    </div>
+                    <p class="project-role-title">Roles and Responsibilities:</p>
+                    <ul class="project-bullets">
+                        <li>Performed SAP S/4HANA custom code adaptation, analyzing legacy ECC programs to resolve
+                            incompatible syntax, replace obsolete tables, and ensure seamless system conversion.</li>
+                        <li>Developed optimized S/4HANA business solutions leveraging AMDP and CDS Views to execute
+                            intensive code pushdown, fully unlocking SAP HANA's in-memory processing capabilities.</li>
+                        <li>Implemented cross-system data integration using RFCs to extract real-time data from external
+                            SAP systems for custom reporting.</li>
+                        <li>Supported team members during functional testing by rapidly absorbing KT, fixing defects,
+                            and delivering additional business enhancements for their existing programs.</li>
+                        <li>Created detailed Technical Specifications and Unit Test documentation to support
+                            deliverables and ensure quality.</li>
+                        <li>Participated in comprehensive peer code reviews to uphold strict quality standards, optimize
+                            ABAP performance, and foster cross-team knowledge sharing.</li>
+                    </ul>
+                    <div class="project-tech-stack">
+                        <span>S/4HANA</span>
+                        <span>AMDP</span>
+                        <span>CDS Views</span>
+                        <span>RFCs</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="p-client">Client: <strong>United Parks & Resorts Inc.</strong></div>
+                        <div class="p-date">August 2024 - December 2024</div>
+                    </div>
+                    <p class="project-role-title">Roles and Responsibilities:</p>
+                    <ul class="project-bullets">
+                        <li>Improved the efficiency of reports by identifying and resolving performance issues through
+                            code remediation.</li>
+                        <li>Developed custom reports to address business requirements in HANA system.</li>
+                        <li>Actively participated in peer reviews to share knowledge and uphold code quality standards.
+                        </li>
+                        <li>Prepared Technical Specification Documents and conducted Technical Unit Testing for
+                            developments.</li>
+                    </ul>
+                    <!-- Interactive Hover Reveal -->
+                    <div class="project-tech-stack">
+                        <span>HANA</span>
+                        <span>AMDP</span>
+                        <span>CDS Views</span>
+                        <span>Performance Tuning</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="p-client">Client: <strong>Newell Brands</strong></div>
+                        <div class="p-date">February 2022 - July 2024</div>
+                    </div>
+
+                    <p class="project-role-title">Roles and Responsibilities:</p>
+                    <ul class="project-bullets">
+                        <li>Actively participated in development and support activities, addressing defect fixes and
+                            enhancements.</li>
+                        <li>Designed and implemented custom reports ensuring accurate and timely data representation.
+                        </li>
+                        <li>Worked with Proxies, BAPIs, and IDOCs for various business processes.</li>
+                        <li>Performed code optimization and conducted thorough issue analysis to resolve technical
+                            challenges.</li>
+                        <li>Created comprehensive technical documentation and unit test cases; conducted code reviews.
+                        </li>
+                    </ul>
+                    <div class="project-tech-stack">
+                        <span>BAPIs</span>
+                        <span>IDOCs</span>
+                        <span>Proxies</span>
+                        <span>Custom Reports</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="resume-section fade-up" id="certifications">
+            <h2 class="section-title">CERTIFICATIONS</h2>
+            <div class="section-content">
+
+                <ul class="project-bullets">
+                    <li>SAP Certified-Backend Developer-ABAP Cloud (C_ABAPD_2507) [ Expiry: October 20, 2026 ]</li>
+                </ul>
+
+            </div>
+        </section>
+
+        <!-- Extra-Curricular -->
+        <section class="resume-section fade-up" id="extra">
+            <h2 class="section-title">EXTRA-CURRICULAR ACTIVITIES</h2>
+            <div class="section-content activities-row">
+                <div class="activity-chip"><i class='bx bx-book-reader'></i> Reading</div>
+                <div class="activity-chip"><i class='bx bx-game'></i> Carrom</div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- PDF Preview Modal -->
+    <div id="pdf-modal" class="pdf-modal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <h3>Resume Preview</h3>
+                <div class="pdf-modal-actions">
+                    <button id="modal-download-btn" class="modal-btn" aria-label="Download"><i
+                            class='bx bx-download'></i> Download File</button>
+                    <button id="modal-close-btn" class="modal-btn close-btn" aria-label="Close"><i
+                            class='bx bx-x'></i></button>
+                </div>
+            </div>
+            <div class="pdf-modal-body">
+                <iframe id="pdf-preview-frame" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts for interactivity and PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

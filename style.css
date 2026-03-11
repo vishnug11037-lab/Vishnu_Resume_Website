@@ -1,0 +1,856 @@
+:root {
+    /* Light Theme Variables */
+    --bg-color: #d1d5db; /* Desk color */
+    --paper-bg: #fffefe; 
+    --text-main: #2d3748;
+    --text-light: #4a5568;
+    --accent: #2b6cb0;
+    --accent-hover: #2c5282;
+    --border-color: #e2e8f0;
+    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.15);
+    --tag-bg: #f1f5f9;
+    --tag-hover: #e2e8f0;
+    --bg-light-hover: #f8fafc;
+    --paper-texture-opacity: 0.4;
+    
+    --font-heading: 'Crimson Pro', serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Warm Lamp Theme Variables (Replacing traditional Dark Mode) */
+body.dark-theme {
+    --bg-color: #1a120c; /* Very dark desk surface in the shadows */
+    --paper-bg: #fff1d6; /* Warm, yellow-tinted paper illuminated by a lamp */
+    --text-main: #3b2818; /* Dark ink text for readability */
+    --text-light: #6e503b; /* Dimmed brown ink */
+    --accent: #b45309; /* Deep orange/amber emphasis */
+    --accent-hover: #d97706; /* Lighter amber hover */
+    --border-color: #e6cfa8; /* Warm paper border */
+    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.8);
+    --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.95);
+    --tag-bg: #fde68a; /* Soft yellow sticky-note tags */
+    --tag-hover: #fcd34d; /* Brighter yellow hover */
+    --bg-light-hover: #fae4c0; /* Slightly darker warm paper hover */
+    --paper-texture-opacity: 0.6; /* Pronounced paper texture under harsh light */
+}
+
+body.dark-theme .desk-light {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    background: radial-gradient(circle at top left, rgba(253, 186, 116, 0.12) 0%, rgba(252, 211, 77, 0.04) 40%, transparent 75%); /* Soft, diffused warm ambient glow */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    padding: 40px 20px;
+    position: relative;
+}
+
+/* Simulated Desk Lighting */
+.desk-light {
+    position: fixed;
+    top: -20%;
+    left: 10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* =========================
+   Side Nav (Scroll dots)
+   ========================= */
+.side-nav {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures dots and button align center */
+    gap: 15px;
+    z-index: 100;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--text-light); /* Uses text-light so it shifts cleanly */
+    transition: all var(--transition-fast);
+    position: relative;
+    border: none;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.nav-dot:not(.theme-btn):hover, .nav-dot.active {
+    background-color: var(--accent);
+    transform: scale(1.2);
+}
+
+.theme-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--paper-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft);
+    font-size: 16px;
+    border-radius: 50%;
+    margin: 0 auto; /* Center align with the dots */
+}
+
+.theme-btn:hover {
+    background-color: var(--bg-light-hover);
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+.nav-divider {
+    height: 10px;
+    width: 1px;
+    background-color: var(--text-light);
+    margin: 0;
+    opacity: 0.5;
+}
+
+.nav-dot::after {
+    content: attr(title);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background: #1a202c; /* Fixed dark background */
+    color: #ffffff; /* Fixed white text */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* In dark mode, invert the tooltip to be light for contrast against the dark desk */
+body.dark-theme .nav-dot::after {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+.nav-dot:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* =========================
+   Paper Container
+   ========================= */
+.resume-paper {
+    background-color: var(--paper-bg);
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 70px 90px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    z-index: 10;
+    transform-origin: top center;
+    transition: box-shadow var(--transition-smooth), transform var(--transition-smooth);
+    border-radius: 2px;
+}
+
+/* Paper Flip/Hover effect on the whole document */
+.resume-paper:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+/* Subtle texture overlay to make it look like real paper */
+.paper-texture {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+    opacity: var(--paper-texture-opacity);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity var(--transition-smooth);
+}
+
+/* =========================
+   Header
+   ========================= */
+.resume-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.name-reveal {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Underline animation on hover */
+.name-reveal::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition-smooth);
+}
+
+.resume-header:hover .name-reveal::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.contact-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: all var(--transition-fast);
+}
+
+.contact-btn:hover {
+    background: rgba(43, 108, 176, 0.1);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.separator {
+    color: #cbd5e1;
+    font-size: 12px;
+}
+
+/* =========================
+   Sections Base
+   ========================= */
+.resume-section {
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.section-content {
+    font-size: 14.5px;
+    color: var(--text-main);
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+/* Highlight Hover Effect for Objective */
+.highlight-hover {
+    padding: 15px;
+    border-radius: 8px;
+    transition: background var(--transition-fast);
+    margin-left: -15px;
+    width: calc(100% + 30px);
+}
+
+.highlight-hover:hover {
+    background: var(--bg-light-hover);
+}
+
+/* =========================
+   Education (Interactive Rows)
+   ========================= */
+.edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    margin-left: -10px;
+    width: calc(100% + 20px);
+    transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.edu-row:hover {
+    background: var(--bg-light-hover);
+    transform: translateX(5px);
+}
+
+.edu-primary {
+    display: flex;
+    flex-direction: column;
+}
+
+.degree {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.school {
+    color: var(--text-light);
+    font-size: 13.5px;
+}
+
+.edu-date {
+    font-weight: 500;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+/* =========================
+   Skills (Animated Tags)
+   ========================= */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill-category {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: default;
+    transition: all var(--transition-fast);
+    /* Animation setup applied via JS/Classes */
+    transform: translateY(10px);
+    opacity: 0;
+}
+
+.skill-tag.animate-in {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: var(--anim-delay);
+}
+
+@keyframes popIn {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.skill-tag:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 10px rgba(43, 108, 176, 0.2);
+}
+
+.alt-tags .skill-tag:hover {
+    background: #475569;
+    border-color: #475569;
+    box-shadow: 0 4px 10px rgba(71, 85, 105, 0.2);
+}
+
+/* =========================
+   Experience (Expandable)
+   ========================= */
+.exp-item {
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: all var(--transition-smooth);
+}
+
+.exp-item.expandable:hover {
+    background: var(--bg-light-hover);
+    border-color: var(--border-color);
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.exp-role {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.toggle-icon {
+    font-size: 20px;
+    color: var(--accent);
+    transition: transform var(--transition-fast);
+}
+
+.exp-item.expanded .toggle-icon {
+    transform: rotate(90deg);
+}
+
+.exp-company {
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.exp-date {
+    font-size: 13.5px;
+    color: var(--text-light);
+}
+
+.exp-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-smooth), opacity var(--transition-smooth), padding var(--transition-smooth);
+    opacity: 0;
+    padding: 0 15px 0 45px;
+}
+
+.exp-item.expanded .exp-details {
+    max-height: 200px;
+    opacity: 1;
+    padding-bottom: 15px;
+}
+
+.exp-bullets {
+    list-style: none;
+}
+
+.exp-bullets li {
+    position: relative;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.exp-bullets i {
+    color: #d69e2e; /* Gold color for awards */
+    margin-top: 3px;
+}
+
+/* =========================
+   Projects (Interactive Cards)
+   ========================= */
+.project-card {
+    background: var(--paper-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    transform: translateY(-3px);
+    border-color: #cbd5e1;
+}
+
+/* Card hover edge accent highlight */
+.project-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transition: transform var(--transition-smooth);
+}
+
+.project-card:hover::before {
+    transform: scaleY(1);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.p-client {
+    font-size: 15px;
+}
+
+.p-date {
+    font-size: 13.5px;
+    color: var(--text-light);
+}
+
+.project-role-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.project-bullets {
+    list-style-type: disc;
+    margin-left: 20px;
+    color: var(--text-main);
+}
+
+.project-bullets li {
+    margin-bottom: 6px;
+}
+
+.project-tech-stack {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+    opacity: 0.6;
+    transition: opacity var(--transition-fast);
+}
+
+.project-card:hover .project-tech-stack {
+    opacity: 1;
+}
+
+.project-tech-stack span {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(43, 108, 176, 0.08);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* =========================
+   Extra-Curricular
+   ========================= */
+.activities-row {
+    display: flex;
+    gap: 15px;
+}
+
+.activity-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--bg-light-hover);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    cursor: default;
+}
+
+.activity-chip i {
+    font-size: 18px;
+    color: var(--text-light);
+    transition: color var(--transition-fast);
+}
+
+.activity-chip:hover {
+    background: var(--paper-bg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.activity-chip:hover i {
+    color: var(--accent);
+}
+
+/* =========================
+   Download Resume Button
+   ========================= */
+.download-paper-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all var(--transition-smooth);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+body.dark-theme .download-paper-btn {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.download-paper-btn i.bx-cookie {
+    display: none; /* Ignore the placeholder cookie */
+}
+
+.download-paper-btn i.bxs-file-pdf {
+    font-size: 20px;
+}
+
+.download-paper-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+body.dark-theme .download-paper-btn:hover {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+/* The Flip Animation Class */
+.download-paper-btn.flipping {
+    pointer-events: none;
+    animation: paperFlip 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+}
+
+/* Animate the icon specifically to look like a flipping paper */
+.download-paper-btn.flipping i.bxs-file-pdf {
+    animation: iconFly 1.2s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+}
+
+@keyframes paperFlip {
+    0% { transform: translateY(0) rotateX(0); }
+    30% { transform: translateY(-20px) rotateX(15deg); }
+    50% { transform: translateY(-40px) rotateX(180deg) scale(1.1); background: #fff; color: var(--accent); }
+    70% { transform: translateY(-20px) rotateX(345deg); }
+    100% { transform: translateY(0) rotateX(360deg); background: #48bb78; } /* turns green on success */
+}
+
+@keyframes iconFly {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0; transform: scale(1.5); }
+    100% { opacity: 1; transform: scale(1); content: "\ea1f"; }
+}
+
+/* =========================
+   PDF Preview Modal
+   ========================= */
+.pdf-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-smooth);
+}
+
+.pdf-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.pdf-modal-content {
+    background: var(--paper-bg);
+    width: 90%;
+    max-width: 1000px;
+    height: 90vh;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform var(--transition-smooth);
+}
+
+.pdf-modal.active .pdf-modal-content {
+    transform: translateY(0);
+}
+
+.pdf-modal-header {
+    padding: 15px 20px;
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pdf-modal-header h3 {
+    margin: 0;
+    font-family: var(--font-main);
+    font-size: 18px;
+    color: var(--text-main);
+}
+
+.pdf-modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: var(--font-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background var(--transition-fast);
+}
+
+#modal-download-btn {
+    background: var(--accent);
+    color: white;
+}
+
+#modal-download-btn:hover {
+    background: var(--accent-hover);
+}
+
+.close-btn {
+    background: transparent;
+    color: var(--text-main);
+    font-size: 20px;
+    padding: 8px;
+}
+
+.close-btn:hover {
+    background: rgba(128, 128, 128, 0.1);
+}
+
+.pdf-modal-body {
+    flex: 1;
+    background: #525659; /* Standard PDF viewer background color */
+}
+
+.pdf-modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* =========================
+   Scroll Reveal Animation
+   ========================= */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   Responsive Adjustments
+   ========================= */
+@media (max-width: 900px) {
+    .side-nav {
+        display: none; /* Hide dots on small screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .resume-paper {
+        padding: 40px 30px;
+    }
+    
+    .contact-bar {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .separator {
+        display: none;
+    }
+    
+    .edu-row, .exp-header, .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .exp-date, .p-date, .edu-date {
+        align-self: flex-start;
+        font-size: 12.5px;
+    }
+}
